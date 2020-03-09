@@ -2,6 +2,7 @@ use std::cmp;
 use std::collections;
 use std::io;
 
+#[derive(Default)]
 pub struct Heap<T>
 where
     T: io::Read,
@@ -131,6 +132,7 @@ where
     }
 }
 
+#[allow(clippy::string_lit_as_bytes)]
 #[cfg(test)]
 mod tests {
     use super::*;
