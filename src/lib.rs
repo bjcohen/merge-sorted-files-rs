@@ -10,6 +10,8 @@ where
     heap: collections::BinaryHeap<Entry<T>>,
 }
 
+/// Implementation of a heap specialized to keep a list of files sorted on the contents of the first
+/// line.
 impl<T> Heap<T>
 where
     T: io::Read,
@@ -19,9 +21,9 @@ where
         Heap { heap }
     }
 
-    pub fn add_reader(&mut self, filename: String, reader: T) -> io::Result<Option<String>> {
+    pub fn add_reader(&mut self, filename: String, reader: T) -> io::Result<()> {
         let buf_reader = io::BufReader::new(reader);
-        self.readd_reader(filename, buf_reader)
+        self.readd_reader(filename, buf_reader).map(|_| ())
     }
 
     fn readd_reader(

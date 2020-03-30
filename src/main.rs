@@ -14,7 +14,7 @@ fn main() -> io::Result<()> {
     Ok(())
 }
 
-fn add_file_to_heap(heap: &mut Heap<fs::File>, filename: String) -> io::Result<Option<String>> {
+fn add_file_to_heap(heap: &mut Heap<fs::File>, filename: String) -> io::Result<()> {
     let f = fs::File::open(&filename)?;
     heap.add_reader(filename, f)
 }
